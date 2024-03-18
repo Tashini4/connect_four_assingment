@@ -48,6 +48,13 @@ public class BoardImpl implements Board {
         }*/
 
     }
+
+    @Override
+    public void updateMove(int col, int row, Piece move) {
+        pieces[col][row] = move;
+    }
+
+
     @Override
     public  Winner findWinner() {
         for (int i = 0; i < pieces.length; i++) {
@@ -70,12 +77,6 @@ public class BoardImpl implements Board {
 
         return new Winner(Piece.EMPTY);
     }
-
-    @Override
-    public void updateMove(int col, int row, Piece move) {
-        pieces[col][findNextAvailableSpot(col)]=move;
-    }
-
     public BoardImpl(BoardUI boardUI) {
         this.boardUI = boardUI;
         pieces =new Piece [NUM_OF_COLS] [NUM_OF_ROWS];
@@ -87,10 +88,6 @@ public class BoardImpl implements Board {
 
         }
     }
-
-
-
-
     public BoardUI getBoardUI() {
         return boardUI;
     }
